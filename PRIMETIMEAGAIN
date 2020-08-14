@@ -1,0 +1,65 @@
+package codevitapractice;
+
+import java.util.Scanner;
+
+public class primetimeagain {
+    static boolean checkprime(int n)
+    {
+        if(n<=1)
+            return false;
+
+        if(n<=3)
+            return true;
+        else
+        {
+            for(int i=3;i<n;i++)
+            {
+                if(n%i==0)
+                    return false;
+            }
+
+        }
+        return true;
+
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int d=sc.nextInt();
+        int p=sc.nextInt();
+        int hours=d/p;
+        if(d%p!=0)
+            System.exit(0);
+        int n=hours;
+        int result=0;
+
+        while(n>1)
+        {
+
+            int i=0;
+            int count=0;
+            while(true) {
+                int k = (i * hours) + n;
+                //System.out.print(hours);
+                //System.out.print(k);
+                if (checkprime(k) && k <= d)
+                    count += 1;
+                if (i == (p - 1))
+                    break;
+                i += 1;
+
+
+            }
+            if (count == p)
+                result += 1;
+
+            n -= 1;
+
+
+
+
+        }
+        System.out.println(result);
+
+
+    }
+}
